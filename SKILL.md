@@ -33,13 +33,15 @@ It is also the missing **consumer** of the suite's machine-readable layer. The r
 
 Gather your own recent outputs and what each was *supposed* to achieve. The error signal is the gap between the two. Be concrete and numeric where you can: not "that went okay" but "I set cadence to 300s; the world changed every 90s; I under-watched by ~3×." A vague sense of how it went is not a measurement.
 
+**Pull the prior conclusions too.** Before diagnosing, read what's already been written back — your recent recorded deltas (step 6) and the relevant feedback/memory the store already holds. The store, not your fresh impression, is the baseline you're measuring against.
+
 ### 2. Score against the standard, not the vibe
 
 Compare to the `fitness_signal` you declared for this behavior — realized cost/benefit, not whether it felt busy. Name the number when one exists; an honest "I don't have a measurement for this" is itself a finding (you're flying blind on that behavior — that's a fix). The score, not the feeling, decides whether anything needs to change.
 
 ### 3. Diagnose the error source
 
-Why the gap? Distinguish a **one-off** (noise — a bad sample, an unlucky input) from a **systematic** error (a wrong rule, a missing check, a bad default, a mis-set parameter). Only systematic errors deserve a fix. Over-correcting on noise *injects* error — it is its own failure mode, and the most common one. If you can't tell yet, gather one more sample before touching anything.
+First, is this even open? If a prior write-back already diagnosed *and* corrected this finding, it is **settled** — cite it and stop. Re-diagnosing a closed conclusion is churn, and churn scores zero by step 5's own test; the only thing worth re-opening a settled finding for is evidence the old correction stopped working. Then, for what's genuinely open: why the gap? Distinguish a **one-off** (noise — a bad sample, an unlucky input) from a **systematic** error (a wrong rule, a missing check, a bad default, a mis-set parameter). Only systematic errors deserve a fix. Over-correcting on noise *injects* error — it is its own failure mode, and the most common one. If you can't tell yet, gather one more sample before touching anything.
 
 ### 4. Correct — write it back
 
@@ -60,6 +62,7 @@ Log what was wrong, what you changed, and whether it worked — so the same erro
 - **Score by realized outcome, not vibe or stars.** Judge against a reproducible cost/benefit signal, not how busy or clever it felt.
 - **Correct systematic error, not noise.** Fix what recurs; over-correcting on a one-off is the most common way to make things worse. Tell signal from luck *before* you touch anything.
 - **A correction that doesn't change future behavior didn't happen.** It must land in a parameter, a rule, a default, or a memory — not just a realization.
+- **Check what's already concluded before diagnosing.** Read the store first; a finding a prior write-back already settled gets cited, not re-derived. Re-diagnosing closed conclusions is churn — the cheapest error to prevent and the easiest to commit, since rediscovery always feels like insight.
 - **Route what isn't yours.** Capability gaps to playtime, facts to rem-sleep, wrong goals to contemplation. Proprioception fixes performance, then hands off.
 - **The organ must grade itself too.** Proprioception evaluates the other organs *and its own corrections* — whether they're landing or churning. The recursion is the point, not a paradox: a feedback controller exempt from its own feedback is the first thing that rots.
 - **Functional, not mystical.** Error-measurement and correction with discipline — a control loop, not introspective theater.

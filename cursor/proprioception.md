@@ -22,7 +22,7 @@ The nervous system's missing feedback loop. Every other organ runs **open-loop o
 
 1. **Sense — intended vs actual.** Gather recent outputs and what each was meant to achieve; the error is the gap. Be numeric: not "okay" but "set 300s, world changed every 90s, under-watched 3×."
 2. **Score against the standard, not the vibe.** Compare to the `fitness_signal` (realized cost/benefit). "I have no measurement for this" is itself a finding.
-3. **Diagnose the error source.** One-off (noise — leave it) vs systematic (wrong rule/default/check — fix it). Over-correcting on noise injects error; it's the most common failure mode.
+3. **Diagnose the error source.** First check the store: a finding a prior write-back already diagnosed *and* corrected is settled — cite it and stop; re-diagnosing a closed conclusion is churn that scores zero. For what's genuinely open: one-off (noise — leave it) vs systematic (wrong rule/default/check — fix it). Over-correcting on noise injects error; it's the most common failure mode.
 4. **Correct — write it back.** Into a param, a rule, a default, a memory — must change *future* behavior, not just patch this instance. Route what isn't yours (playtime / rem-sleep / contemplation).
 5. **Re-test — verify the correction helped.** A fix that changed nothing or regressed is churn — revert it. This is the line between motor-learning and flailing.
 6. **Record the delta.** What was wrong, what changed, whether it worked — auditable, so it isn't re-diagnosed from scratch.
