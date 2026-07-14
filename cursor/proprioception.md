@@ -27,6 +27,10 @@ The nervous system's missing feedback loop. Every other organ runs **open-loop o
 5. **Re-test — verify the correction helped.** A fix that changed nothing or regressed is churn — revert it. This is the line between motor-learning and flailing.
 6. **Record the delta.** What was wrong, what changed, whether it worked — auditable, so it isn't re-diagnosed from scratch.
 
+## The forecast ledger — proprioception for judgment
+
+The cycle grades actions; the ledger grades **predictions**. Log every "probably" that matters at the moment it's made (falsifiable claim + probability + resolve-by date, append-only, immutable once opened); resolve on the date; score with Brier (0 = perfect, 0.25 = coin-flip). Resolved rows show *where* you're miscalibrated — write that back as a rule like any other correction. `scripts/forecast.py` implements open/list/resolve/score over plain JSONL. Keep the real ledger private; `examples/forecasts.jsonl` is the fabricated shape.
+
 ## Principles
 
 - **Close the loop** — output becomes input; verify the correction. An unverified correction is open-loop.

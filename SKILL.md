@@ -26,6 +26,7 @@ It is also the missing **consumer** of the suite's machine-readable layer. The r
 - **When the same mistake appears twice** — that's systematic error, not bad luck. Correct the *process*, not the instance.
 - **Periodically, against the declared fitness_signal** — is each behavior (and each organ) actually earning its keep?
 - **At a handoff** — a capability gap belongs to playtime, a durable fact to rem-sleep, a wrong goal to contemplation. Proprioception decides which.
+- **When you catch yourself saying "probably" about something that matters** — log it as a forecast (below); grade it when reality answers.
 
 ## The proprioception cycle
 
@@ -54,6 +55,19 @@ A feedback loop that never checks its own correction is open-loop in disguise. C
 ### 6. Record the delta
 
 Log what was wrong, what you changed, and whether it worked — so the same error isn't re-diagnosed from scratch next time, and so the correction is auditable by you and by a peer reading the lineage ledger. A verified correction is a durable upgrade; hand it to memory and, if it bears on a skill's evolution, to `lineage.jsonl`.
+
+## The forecast ledger — proprioception for judgment
+
+The cycle above grades *actions*. But an agent also acts by **predicting** — "this client will probably pay," "this migration should take a week," "that flaky test is probably noise" — and those judgments never get graded unless captured at the moment they're made. Hindsight silently rewrites them ("I knew it all along"); an unresolved forecast is a muscle that's never been tested. The ledger is the sense-step of the cycle applied to your own probability calls: intended (the p you gave) vs actual (what happened).
+
+Mechanics:
+
+1. **Log the call when you make it.** One append-only line: a falsifiable claim, a probability strictly between 0 and 1, a resolve-by date, a source. If you can't phrase the falsifier, you don't have a forecast — you have a mood.
+2. **Resolve on the date, not when convenient.** The resolve-by date is a commitment device. Sweeping due forecasts belongs in every periodic proprioception run (and in the wake sweep, if you run [exteroception](https://github.com/thdelmas/exteroception)).
+3. **Score with Brier** — mean of (p − outcome)²; 0 is perfect, 0.25 is coin-flip calibration. The score says *whether* you're miscalibrated; the resolved rows say *where* — overconfident on your own throughput, underconfident on other people, "probably noise" running hot. That diagnosis is a step-3/step-4 correction like any other: write it back as a rule ("my client-pays 'probably' runs ~20 points high").
+4. **Never edit an opened forecast.** Claims and probabilities are immutable after opening; resolution only fills the outcome fields. An editable ledger calibrates nothing.
+
+`scripts/forecast.py` implements the ledger (open / list / resolve / score) over a plain JSONL file (`$FORECAST_LEDGER`, default `./forecasts.jsonl`). **Keep the real ledger private** — forecasts are about people and money more often than not; `examples/forecasts.jsonl` shows the shape with fabricated entries.
 
 ## Principles
 

@@ -58,6 +58,19 @@ cp cursor/proprioception.md ~/.cursor/commands/
 
 See [`SKILL.md`](./SKILL.md) for when to run it and the full principles.
 
+## The forecast ledger
+
+The cycle grades *actions*; the ledger grades *judgment*. Every "probably" that matters gets logged at the moment it's made — falsifiable claim, probability, resolve-by date — resolved when reality answers, and scored with Brier (0 = perfect, 0.25 = coin-flip). The resolved rows show *where* you're miscalibrated (own throughput running hot, other people's follow-through, "probably noise" calls), and that diagnosis is written back like any other correction. Opened forecasts are immutable — an editable ledger calibrates nothing.
+
+```bash
+python3 scripts/forecast.py open "The vendor ships the fix by 2026-05-01" 0.3 2026-05-01
+python3 scripts/forecast.py            # list open, flag due
+python3 scripts/forecast.py resolve f001 false
+python3 scripts/forecast.py score      # Brier over resolved
+```
+
+Keep the real ledger private (forecasts are about people and money more often than not); [`examples/forecasts.jsonl`](./examples/forecasts.jsonl) shows the shape with fabricated entries.
+
 ## License
 
 MIT
