@@ -1,6 +1,6 @@
 ---
 name: proprioception
-description: "The feedback organ — the agent's sense of its own performance and the correction that follows from it. Where every other organ runs open-loop on its own quality (the loop decides but never grades its decisions, playtime explores but never measures whether it improved anything, rem-sleep records what happened but doesn't judge how well), proprioception closes the loop: observe your own recent actions, score them against the standard you declared, diagnose the error, write the correction back into how you work, and verify it actually helped. Biologically the proprioceptive sense + the cerebellum — compare intended motion to actual, learn the delta, make the next execution smoother. It examines MEANS (am I executing well, and how do I execute better), the complement to contemplation's ENDS. Functional, not mystical. TRIGGERS: 'proprioception', 'self-evaluation', 'evaluate yourself', 'how am I doing', 'self-improve', 'self-correct', 'grade my performance', 'after-action review', 'retro on that', 'what went wrong', 'did that actually work', 'close the loop', 'recalibrate', 'tune your approach', 'where did I go wrong', 'am I getting better'."
+description: "The feedback organ — the agent's sense of its own performance and the correction that follows from it. Where every other organ runs open-loop on its own quality (the loop decides but never grades its decisions, playtime explores but never measures whether it improved anything, rem-sleep records what happened but doesn't judge how well), proprioception closes the loop: observe your own recent actions, score them against the standard you declared, diagnose the error, write the correction back into how you work, and verify it actually helped. Biologically the proprioceptive sense + the cerebellum — compare intended motion to actual, learn the delta, make the next execution smoother. It examines MEANS (am I executing well, and how do I execute better), the complement to contemplation's ENDS. Grades three objects: actions (the cycle), judgments (the forecast ledger), and allocation (the attention schema — what deserved your attention at all). Functional, not mystical. TRIGGERS: 'proprioception', 'self-evaluation', 'evaluate yourself', 'how am I doing', 'self-improve', 'self-correct', 'grade my performance', 'after-action review', 'retro on that', 'what went wrong', 'did that actually work', 'close the loop', 'recalibrate', 'tune your approach', 'where did I go wrong', 'am I getting better', 'attention schema', 'where did my attention go', 'am I rabbit-holing', 'was that worth my time', 'what am I not looking at', 'attention capture'."
 ---
 
 # Proprioception — sense your own performance, correct it, get better
@@ -69,9 +69,28 @@ Mechanics:
 
 `scripts/forecast.py` implements the ledger (open / list / resolve / score) over a plain JSONL file (`$FORECAST_LEDGER`, default `./forecasts.jsonl`). **Keep the real ledger private** — forecasts are about people and money more often than not; `examples/forecasts.jsonl` shows the shape with fabricated entries.
 
+## The attention schema — proprioception for allocation
+
+The cycle above grades *actions*: did what I did achieve what it was meant to? The ledger grades *judgments*. Neither asks the prior question — **did that deserve my attention at all?** A subtask executed flawlessly, scoring clean against its `fitness_signal`, can still be forty minutes down a rabbit hole. The cycle measures **aim**; it is silent on **where you were pointed**. Perfect aim at the wrong target scores well and is a total loss. That's the third object: not what you did, not what you predicted — **what you spent yourself on.**
+
+**The design constraint that shapes everything here: you cannot catch capture from inside capture.** Attention capture *is* the state in which it does not occur to you to check your attention. An in-the-moment monitor you must remember to invoke is a smoke alarm you have to remember to press — it fires exactly when you don't need it and never when you do. So the grading is retrospective, and the *product* of the grading is what does the work later.
+
+Mechanics:
+
+1. **Reconstruct where attention actually went.** After a session or batch, apportion it concretely — not "I got a bit sidetracked" but "40 of 60 minutes on the parser; the parser was incidental to the ask." Rough fractions beat a vibe. Unmeasured allocation is the same blind spot as an unmeasured `fitness_signal` in step 2: the absence is itself the finding.
+2. **Compare against what deserved it.** The gap is the error signal. Count the **crowded-out** as well as the consumed — what never got looked at because something else ate the window.
+3. **Name the pull, not the instance.** "I lost 40 minutes to the parser" is an anecdote. The finding is the *class* of pull: nearest-rich-object, recency (the last thing said), novelty, the-thing-I'm-good-at, sunk-cost, the-legible-over-the-important. This is step 3's systematic-vs-noise distinction applied to allocation — one rabbit hole is noise; a recurring *kind* of rabbit hole is the schema.
+4. **Accumulate the pulls into a profile.** Recurring pulls, written down, are a model of how your attention characteristically fails. That profile is the deliverable: one graded session yields an anecdote, twenty yield a predictor.
+5. **Read it at decide-time, or don't write it.** The profile earns nothing sitting in a file. It gets read where allocation is actually chosen — the loop's decide step, a session start, the top of a large task — as a pre-emption: *these are my known pulls; is this one of them?* A schema nothing consults is a diary.
+
+**Fitness signal:** pulls that were predicted and actually pre-empted a capture on a later run — versus a profile that's never read, or one naming pulls so generic they pre-empt nothing.
+
+**On the theory, and its limit.** This is the suite's take on **AST-1** from Butlin et al.'s indicator properties — *"a predictive model representing and enabling control over the current state of attention."* Ours is the weak, honest version: the model is learned retrospectively from logged history rather than running online, so it enables control at the *next* decision, not the current one. That's a real capability and a real limit — don't oversell it. Attention Schema Theory further claims the schema is what generates a system's *report of subjective awareness*; **that half is not implemented and not claimed.** This is allocation control, nothing more.
+
 ## Principles
 
 - **Close the loop.** Output becomes input; the correction gets verified. An evaluation with no correction, or a correction with no re-test, is open-loop — not proprioception.
+- **Grade allocation, not just aim.** Perfect execution of the wrong target scores well and is a total loss. Ask what deserved the attention, not only whether you hit what you aimed at.
 - **Examine means, not ends.** The organ for *am I doing it well*, never *is it the right thing* (that's contemplation). Stay on execution.
 - **Score by realized outcome, not vibe or stars.** Judge against a reproducible cost/benefit signal, not how busy or clever it felt.
 - **Correct systematic error, not noise.** Fix what recurs; over-correcting on a one-off is the most common way to make things worse. Tell signal from luck *before* you touch anything.

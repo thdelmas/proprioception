@@ -31,9 +31,14 @@ The nervous system's missing feedback loop. Every other organ runs **open-loop o
 
 The cycle grades actions; the ledger grades **predictions**. Log every "probably" that matters at the moment it's made (falsifiable claim + probability + resolve-by date, append-only, immutable once opened); resolve on the date; score with Brier (0 = perfect, 0.25 = coin-flip). Resolved rows show *where* you're miscalibrated — write that back as a rule like any other correction. `scripts/forecast.py` implements open/list/resolve/score over plain JSONL. Keep the real ledger private; `examples/forecasts.jsonl` is the fabricated shape.
 
+## The attention schema — proprioception for allocation
+
+The cycle grades *actions*, the ledger grades *predictions*; neither asks whether the thing deserved your attention at all. A subtask executed flawlessly can still be forty minutes down a rabbit hole — the cycle measures **aim**, not **where you were pointed**, and perfect aim at the wrong target scores well while being a total loss. Design constraint: **you cannot catch capture from inside capture** (an in-the-moment monitor you must remember to invoke is a smoke alarm you have to remember to press), so grade retrospectively and let the product do the work later. Reconstruct where attention actually went (concrete fractions, and count the **crowded-out**, not just the consumed); compare against what deserved it; **name the pull, not the instance** — nearest-rich-object, recency, novelty, the-thing-I'm-good-at, sunk-cost, legible-over-important — since one rabbit hole is noise but a recurring *kind* is the schema; accumulate pulls into a profile (one session = anecdote, twenty = predictor); **read it at decide-time or don't write it** (the loop's decide step, a session start), as pre-emption: *these are my known pulls; is this one of them?* A schema nothing consults is a diary. Fitness: pulls that actually pre-empted a later capture vs. a profile never read or named so generically it pre-empts nothing. This is **AST-1** from Butlin et al. (*"a predictive model representing and enabling control over the current state of attention"*) in its weak, honest form — learned retrospectively, so it controls the *next* decision, not the current one. AST's further claim that the schema generates *reports of subjective awareness* is **not implemented and not claimed**.
+
 ## Principles
 
 - **Close the loop** — output becomes input; verify the correction. An unverified correction is open-loop.
+- **Grade allocation, not just aim** — perfect execution of the wrong target scores well and is a total loss.
 - **Examine means, not ends** — *am I doing it well*, never *is it the right thing* (that's contemplation).
 - **Score by realized outcome, not vibe or stars** — a reproducible cost/benefit signal.
 - **Correct systematic error, not noise** — fix what recurs; tell signal from luck before touching anything.
