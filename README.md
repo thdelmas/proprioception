@@ -71,6 +71,17 @@ python3 scripts/forecast.py score      # Brier over resolved
 
 Keep the real ledger private (forecasts are about people and money more often than not); [`examples/forecasts.jsonl`](./examples/forecasts.jsonl) shows the shape with fabricated entries.
 
+## The organ pulse
+
+The cycle grades *actions*, the ledger *judgment*, the attention schema *allocation* — all from evidence the agent left behind, and most organs leave none. An organ that runs in prose has no tool trace, so *untraced* is indistinguishable from *dormant*. The pulse keeps the body's own activity: which organs fired, how often, when last. Invoked organs are traced mechanically at the tool boundary (hook mode); prose organs mark themselves at the start of a cycle; the wake reflex prints a one-line pulse so the marker never depends on recall.
+
+```
+scripts/organ-fired.py --mark contemplation "frame check before the migration"
+scripts/organ-fired.py pulse
+```
+
+Keep the real ledger private (session ids, command fragments); [`examples/organ-fired.tsv`](./examples/organ-fired.tsv) shows the shape with fabricated rows.
+
 ## License
 
 MIT

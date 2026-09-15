@@ -1,0 +1,6 @@
+2026-01-05T08:00:12Z	sess-a1	corpus-callosum	injected	cwd=/work/repo
+2026-01-05T08:01:40Z	sess-a1	exteroception	script	git-sweep.sh
+2026-01-05T09:12:03Z	sess-a1	contemplation	mark	frame check before committing to the migration
+2026-01-06T17:30:00Z	sess-b2	rem-sleep	skill	
+2026-01-06T17:31:10Z	sess-b2	proprioception	script	forecast.py
+2025-12-20T10:00:00Z	sess-00	immune-check	skill	backfill reconstructed from transcript
